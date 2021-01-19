@@ -108,12 +108,13 @@ export function getResults({
   if (onlyUrls) {
     results = results.map((r) => ({ link: r.link }));
   }
-  if (!noDisplay) {
+  if (noDisplay) {
     display(results, disableConsole, onlyUrls);
   }
 
   const resultStats = $(getResultStatsSelector(resultStatsSelector)).html() || '';
   const approximateResults = ((resultStats.split(' results') || [''])[0].split('About ')[1] || '').replace(',', '');
+  logIt("approx results", approximateResults)
   const seconds = parseFloat((resultStats.split(' (')[1] || '').split(' seconds')[0]);
   const cursor = $(getResultCursorSelector(cursorSelector)).html() || '';
   const page = parseInt(cursor.split('</span>')[1], 10);
