@@ -113,8 +113,10 @@ export function getResults({
   }
 
   const resultStats = $(getResultStatsSelector(resultStatsSelector)).html() || '';
+  const jan = $('#result-stats').text();
+  const fa = $('#topstuff').html();
   const approximateResults = ((resultStats.split(' results') || [''])[0].split('About ')[1] || '').replace(',', '');
-  logIt("approx results", approximateResults)
+  //logIt(approximateResults)
   const seconds = parseFloat((resultStats.split(' (')[1] || '').split(' seconds')[0]);
   const cursor = $(getResultCursorSelector(cursorSelector)).html() || '';
   const page = parseInt(cursor.split('</span>')[1], 10);
@@ -122,6 +124,8 @@ export function getResults({
     page,
     approximateResults,
     seconds,
+    jan,
+    fa
   };
   return { results, stats };
 }
@@ -201,7 +205,8 @@ function googleIt(config) {
           results, body, response, stats,
         });
       }
-      return resolve(results);
+      const try1 = {...stats, ...results };
+      return resolve(try1);
     }).catch(reject);
   });
 }

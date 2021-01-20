@@ -54,7 +54,7 @@ const getDefaultRequestOptions = ({
 const titleSelector = 'div.tF2Cxc > div:nth-child(1) > a > h3';
 const linkSelector = 'div.tF2Cxc > div:nth-child(1) > a';
 const snippetSelector = 'div.tF2Cxc > div:nth-child(2) > div > span';
-const resultStatsSelector = '#resultStats';
+const resultStatsSelector = '#result-stats';
 const cursorSelector = '#nav > tbody > tr > td.cur';
 
 const getTitleSelector = (passedValue) => (
